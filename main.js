@@ -17,10 +17,20 @@ phonePlus.addEventListener('click', function(){
 });
 
 // phone minus click event
+
 var phoneMinus = document.getElementById('phone-minus');
 
 phoneMinus.addEventListener('click', function(){
+
   cartPhone("#phone-quantity", 'phone-price', -1, phonePriceNumber);
+
+  // if(parseFloat(document.querySelector('#phone-quantity').getAttribute('value'))=== 0){
+  //   document.getElementById('phone-minus').disabled = true;
+  // }
+  // else{
+  //   document.getElementById('phone-minus').disabled = false;
+  // }
+
 });
 
 // phone case plus click event
@@ -33,7 +43,8 @@ phoneCasePlus.addEventListener('click', function(){
 var phoneCaseMinus = document.getElementById('phone-case-minus');
 phoneCaseMinus.addEventListener('click', function(){
   cartPhone('#phone-case-quantity', 'phone-case-price', -1, phoneCasePriceNumber);
-})
+
+});
 
 // function for adding or removing click and updating price
 function cartPhone(id, priceid, quantityvalue, productpricenumber){
@@ -65,4 +76,5 @@ var totalNumber = parseFloat(total);
 totalNumber = subtotalNumber+taxNumber;
 document.getElementById('total').innerText = totalNumber;
 
-}
+};
+
