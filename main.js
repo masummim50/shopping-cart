@@ -87,3 +87,19 @@ checkOutButton.addEventListener("click", function () {
   return true;
   }
 });
+
+
+// experimental removing element
+var crossbuttons = document.querySelectorAll('.remove-item');
+for(var button of crossbuttons){
+  button.addEventListener('click', function(e){
+    var container =  document.querySelector('.cart-item-container').childElementCount;
+    if(container == 3){
+    document.querySelector('.cart').remove();
+    }
+    else{
+      var clicked = e.target;
+      clicked.parentNode.parentNode.parentNode.remove();
+    }
+  })
+}
