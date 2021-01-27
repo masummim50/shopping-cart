@@ -12,7 +12,7 @@ var phoneCasePriceNumber = parseFloat(phoneCasePrice);
 const phonePlus = document.getElementById('phone-plus');
 phonePlus.addEventListener('click', function(){
 
-  cartPhone('#phone-quantity', 'phone-price', 1, phonePriceNumber);
+  cartProduct('#phone-quantity', 'phone-price', 1, phonePriceNumber);
 
 });
 
@@ -22,32 +22,35 @@ var phoneMinus = document.getElementById('phone-minus');
 
 phoneMinus.addEventListener('click', function(){
 
-  cartPhone("#phone-quantity", 'phone-price', -1, phonePriceNumber);
+  cartProduct("#phone-quantity", 'phone-price', -1, phonePriceNumber);
 
-  // if(parseFloat(document.querySelector('#phone-quantity').getAttribute('value'))=== 0){
-  //   document.getElementById('phone-minus').disabled = true;
-  // }
-  // else{
-  //   document.getElementById('phone-minus').disabled = false;
-  // }
+// minus button is staying disabled 
+
+
+  if(parseFloat(document.querySelector('#phone-quantity').getAttribute('value')) < 1){
+    document.getElementById('phone-minus').disabled = true;
+  }
+  else{
+    document.getElementById('phone-minus').disabled = false;
+  }
 
 });
 
 // phone case plus click event
 var phoneCasePlus = document.getElementById('phone-case-plus');
 phoneCasePlus.addEventListener('click', function(){
-  cartPhone('#phone-case-quantity', 'phone-case-price', 1, phoneCasePriceNumber );
+  cartProduct('#phone-case-quantity', 'phone-case-price', 1, phoneCasePriceNumber );
 });
 
 // phone case minus click eveny
 var phoneCaseMinus = document.getElementById('phone-case-minus');
 phoneCaseMinus.addEventListener('click', function(){
-  cartPhone('#phone-case-quantity', 'phone-case-price', -1, phoneCasePriceNumber);
+  cartProduct('#phone-case-quantity', 'phone-case-price', -1, phoneCasePriceNumber);
 
 });
 
 // function for adding or removing click and updating price
-function cartPhone(id, priceid, quantityvalue, productpricenumber){
+function cartProduct(id, priceid, quantityvalue, productpricenumber){
   let productQuantity = document.querySelector(id);
   let value = parseFloat(productQuantity.getAttribute('value'));
   
