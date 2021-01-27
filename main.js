@@ -22,17 +22,18 @@ var phoneMinus = document.getElementById('phone-minus');
 
 phoneMinus.addEventListener('click', function(){
 
-  cartProduct("#phone-quantity", 'phone-price', -1, phonePriceNumber);
+  // cartProduct("#phone-quantity", 'phone-price', -1, phonePriceNumber);
 
 // minus button is staying disabled 
 
 
   if(parseFloat(document.querySelector('#phone-quantity').getAttribute('value')) < 1){
-    document.getElementById('phone-minus').disabled = true;
+    return false
   }
   else{
-    document.getElementById('phone-minus').disabled = false;
+    cartProduct("#phone-quantity", 'phone-price', -1, phonePriceNumber);
   }
+  
 
 });
 
@@ -45,8 +46,12 @@ phoneCasePlus.addEventListener('click', function(){
 // phone case minus click eveny
 var phoneCaseMinus = document.getElementById('phone-case-minus');
 phoneCaseMinus.addEventListener('click', function(){
+  if(parseFloat(document.querySelector('#phone-case-quantity').getAttribute('value')) < 1){
+    return false
+  }
+  else{
   cartProduct('#phone-case-quantity', 'phone-case-price', -1, phoneCasePriceNumber);
-
+  }
 });
 
 // function for adding or removing click and updating price
