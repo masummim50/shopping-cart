@@ -90,6 +90,7 @@ checkOutButton.addEventListener("click", function () {
 
 
 // experimental removing element
+// this was bonkers, it works but this is so much code, need to reduce it
 var crossbuttons = document.querySelectorAll('.remove-item');
 for(var button of crossbuttons){
   button.addEventListener('click', function(e){
@@ -100,6 +101,15 @@ for(var button of crossbuttons){
     else{
       var clicked = e.target;
       clicked.parentNode.parentNode.parentNode.remove();
+      var sib = clicked.previousElementSibling.childNodes[1].innerText;
+      var amountToMinus = parseFloat(sib);
+      var amountTax = (amountToMinus*15)/100;
+      var subtotal = parseFloat(document.getElementById('subtotal').innerText);
+      var tax = parseFloat(document.getElementById('tax').innerText);
+      var total = parseFloat(document.getElementById('total').innerText);
+      document.getElementById('subtotal').innerText = subtotal - amountToMinus;
+      document.getElementById('tax').innerText = tax - amountTax;
+      document.getElementById('total').innerText = total - (amountToMinus+amountTax);
     }
   })
 }
